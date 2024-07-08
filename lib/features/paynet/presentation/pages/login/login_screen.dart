@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const Spacer(),
               continueButton(
                   clickButton: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const VerificationScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>  VerificationScreen(phoneNumber: _textNumberController.text,)));
                   },
                   disableAndEnable: _textNumberController.text.length == 12,
                   buttonText: "Davom etish"),
