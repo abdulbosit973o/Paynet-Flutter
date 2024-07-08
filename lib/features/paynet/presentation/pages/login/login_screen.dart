@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:paynet_app_flutter/core/utils/colors/app_color.dart';
 import 'package:paynet_app_flutter/core/utils/component/text.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/pages/login/login_bottom_sheet_dialog.dart';
 
 import '../../../../../core/utils/component/continue_button.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';

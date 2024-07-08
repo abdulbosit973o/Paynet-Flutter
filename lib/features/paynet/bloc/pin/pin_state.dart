@@ -26,4 +26,6 @@ class PinInput extends PinState {
 
 class PinMatch extends PinState {}
 
+class PinSuccess extends PinState {}
+
 class PinError extends PinState {}

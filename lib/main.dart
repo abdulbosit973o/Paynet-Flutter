@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:paynet_app_flutter/core/utils/colors/app_color.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_screen.dart';
 
 import 'features/paynet/bloc/splash/splash_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await HiveHelper.initializeHive();
   runApp(const MyApp());
 }
 

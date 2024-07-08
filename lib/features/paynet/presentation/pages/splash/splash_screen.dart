@@ -15,11 +15,13 @@ class SplashScreen extends StatelessWidget {
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state.status == SplashStatus.login) {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => BlocProvider(
-                    create: (context) => LoginBloc(),
-                    child: const LoginScreen(),
-                  )));
+          CustomNavigation.push(context, BlocProvider(
+            create: (context) => LoginBloc(),
+            child: const LoginScreen(),
+          ));
+        }
+        else if (state.status == SplashStatus.pinCode){
+          CustomNavigation.push(context, const PinScreen());
         }
       },
       builder: (context, state) {
