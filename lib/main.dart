@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_screen.dart';
 
+import 'features/paynet/presentation/pages/pin_code_creator/pin_create_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: const PinScreen(),
     );
   }
 }
