@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:paynet_app_flutter/features/paynet/bloc/login/login_bloc.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/login/login_screen.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/pages/pin_code/pin_screen.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_status.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 
 import '../../../bloc/splash/splash_bloc.dart';
+import '../../widgets/custom_navigation.dart';
+import '../pin_code/pin_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

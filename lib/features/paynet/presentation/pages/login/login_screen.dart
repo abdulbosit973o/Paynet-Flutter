@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:paynet_app_flutter/core/utils/colors/app_color.dart';
 import 'package:paynet_app_flutter/core/utils/component/text.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/home_screen.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/pages/pin_code_creator/pin_create_screen.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/pages/verification/verification_screen.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 
 import '../../../../../core/utils/component/continue_button.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';
 import '../verification/verification_screen.dart';
+import 'login_bottom_sheet_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -34,31 +31,47 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 children: [
                   const Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: inputContainerColor,
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    margin: const EdgeInsets.only(top: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text("Til", style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
-                        const SizedBox(width: 8),
-                        Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: inputContainerColor,
-                            ),
-                            child: Image.asset(
-                              "assets/icon/uz.png",
-                              height: 28,
-                              width: 36,
-                              fit: BoxFit.cover,
-                            )),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return loginBottomSheetDialog(
+                              clickRu: () {},
+                              clickCancel: () {
+                                Navigator.pop(context);
+                              },
+                              clickUz: () {},
+                              uzAndRuLanguage: true);
+                        },
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: inputContainerColor,
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      margin: const EdgeInsets.only(top: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text("Til", style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
+                          const SizedBox(width: 8),
+                          Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: inputContainerColor,
+                              ),
+                              child: Image.asset(
+                                "assets/icon/uz.png",
+                                height: 28,
+                                width: 36,
+                                fit: BoxFit.cover,
+                              )),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -94,10 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const Icon(Icons.keyboard_arrow_down_sharp, color: Colors.black45),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2.0),
-                      child: textBold(text: "+998 ", size: 18, color: Colors.black),
-                    ),
+                    textBold(text: "+998 ", size: 18, color: Colors.black),
                     Expanded(
                       child: TextFormField(
                         onChanged: (text) {
@@ -116,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           counterText: "",
                           border: InputBorder.none,
                         ),
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 18, fontFamily: "PaynetB"),
                       ),
                     ),
                     if (_textNumberController.text.isNotEmpty)
