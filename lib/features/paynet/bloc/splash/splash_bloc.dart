@@ -8,7 +8,7 @@ part 'splash_state.dart';
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashState()) {
     on<SplashEvent>((event, emit) {
-      Future.delayed(const Duration(seconds: 2));
+      Future.delayed(const Duration(seconds: 4));
       emit(state.copyWith(SplashStatus.login));
     });
   }

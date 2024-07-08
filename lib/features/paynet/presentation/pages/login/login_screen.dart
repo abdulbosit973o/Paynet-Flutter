@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:paynet_app_flutter/core/utils/colors/app_color.dart';
 import 'package:paynet_app_flutter/core/utils/component/text.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/login/login_bottom_sheet_dialog.dart';
 
 import '../../../../../core/utils/component/continue_button.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';
@@ -30,31 +31,47 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 children: [
                   const Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: inputContainerColor,
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    margin: const EdgeInsets.only(top: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text("Til", style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
-                        const SizedBox(width: 8),
-                        Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: inputContainerColor,
-                            ),
-                            child: Image.asset(
-                              "assets/icon/uz.png",
-                              height: 28,
-                              width: 36,
-                              fit: BoxFit.cover,
-                            )),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return loginBottomSheetDialog(
+                              clickRu: () {},
+                              clickCancel: () {
+                                Navigator.pop(context);
+                              },
+                              clickUz: () {},
+                              uzAndRuLanguage: true);
+                        },
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: inputContainerColor,
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      margin: const EdgeInsets.only(top: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text("Til", style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
+                          const SizedBox(width: 8),
+                          Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: inputContainerColor,
+                              ),
+                              child: Image.asset(
+                                "assets/icon/uz.png",
+                                height: 28,
+                                width: 36,
+                                fit: BoxFit.cover,
+                              )),
+                        ],
+                      ),
                     ),
                   ),
                 ],
