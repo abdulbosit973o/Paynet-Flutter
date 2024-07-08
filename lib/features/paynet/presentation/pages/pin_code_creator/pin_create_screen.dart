@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/scheduler.dart';
-
 import '../../../../../core/utils/assets/app_image.dart';
+import '../../../bloc/pin/pin_bloc.dart';
+import '../../../bloc/pin/pin_event.dart';
+import '../../../bloc/pin/pin_state.dart';
 
-class PinScreen extends StatefulWidget {
-  const PinScreen({Key? key}) : super(key: key);
+class PinCreateScreen extends StatelessWidget {
+  const PinCreateScreen({super.key});
 
   @override
-  _PinScreenState createState() => _PinScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => PinBloc(),
+      child: PinCreateView(),
+    );
+  }
 }
 
-class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMixin {
-  List<int> pin = [];
-  List<int> firstPin = [];
-  bool isFirstAttempt = true;
-  bool isError = false;
+class PinCreateView extends StatefulWidget {
+  @override
+  _PinCreateViewState createState() => _PinCreateViewState();
+}
+
+class _PinCreateViewState extends State<PinCreateView> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
 
@@ -45,51 +54,11 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
     super.dispose();
   }
 
-  void _onNumberButtonPressed(int number) {
-    if (pin.length < 4) {
-      setState(() {
-        pin.add(number);
-      });
-      if (pin.length == 4) {
-        if (isFirstAttempt) {
-          firstPin = List.from(pin);
-          setState(() {
-            isFirstAttempt = false;
-            pin.clear();
-          });
-        } else {
-          if (pin.toString() == firstPin.toString()) {
-            Navigator.pushReplacementNamed(context, '/home');
-          } else {
-            setState(() {
-              isError = true;
-            });
-            _controller.forward();
-            SchedulerBinding.instance.addPostFrameCallback((_) {
-              setState(() {
-                isError = false;
-                pin.clear();
-              });
-            });
-          }
-        }
-      }
-    }
-  }
-
-  void _onDeleteButtonPressed() {
-    if (pin.isNotEmpty) {
-      setState(() {
-        pin.removeLast();
-      });
-    }
-  }
-
   Widget _buildNumberButton(int number) {
     return Container(
       margin: const EdgeInsets.all(10),
       child: ElevatedButton(
-        onPressed: () => _onNumberButtonPressed(number),
+        onPressed: () => context.read<PinBloc>().add(NumberButtonPressed(number)),
         style: ElevatedButton.styleFrom(
           elevation: 0,
           shape: const CircleBorder(),
@@ -98,7 +67,7 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
         ),
         child: Text(
           number.toString(),
-          style: const TextStyle(fontFamily:'PaynetB',fontSize: 24, color: Colors.black),
+          style: const TextStyle(fontFamily:'PaynetB', fontSize: 24, color: Colors.black),
         ),
       ),
     );
@@ -110,7 +79,7 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
       child: Text(
         textAlign: TextAlign.center,
         text,
-        style: const TextStyle(fontFamily:'PaynetB',fontSize: 8, color: Colors.black),
+        style: const TextStyle(fontFamily:'PaynetB', fontSize: 8, color: Colors.black),
       ),
     );
   }
@@ -120,7 +89,7 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
       margin: const EdgeInsets.all(10),
       child: IconButton(
         icon: const Icon(Icons.backspace, color: Colors.black),
-        onPressed: _onDeleteButtonPressed,
+        onPressed: () => context.read<PinBloc>().add(DeleteButtonPressed()),
       ),
     );
   }
@@ -130,79 +99,98 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                const SizedBox(height: 56),
-                Image.asset(
-                  AppImage.logo,
-                  height: 100,
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'PIN-kodni kiriting',
-                  style: TextStyle(fontFamily:'PaynetB',fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Telefon raqamingiz\n+998 95 •••• 30',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontFamily:'PaynetB',fontSize: 14, color: Colors.grey),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                SlideTransition(
-                  position: _offsetAnimation,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(4, (index) {
-                      return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
-                        width: 12,
-                        height: 12,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: index < pin.length
-                              ? (isError ? Colors.red : Colors.green)
-                              : Colors.grey[300],
-                        ),
-                      );
-                    }),
+        child: BlocListener<PinBloc, PinState>(
+          listener: (context, state) {
+            if (state is PinError) {
+              _controller.forward();
+              SchedulerBinding.instance.addPostFrameCallback((_) {
+                context.read<PinBloc>().add(ResetPin());
+              });
+            } else if (state is PinMatch) {
+
+            }
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  const SizedBox(height: 56),
+                  Image.asset(
+                    AppImage.logo,
+                    height: 100,
                   ),
-                ),
-                const SizedBox(height: 40),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32),
-                  child: Column(
-                    children: [
-                      ...[1, 4, 7].map((i) {
-                        return Row(
+                  const SizedBox(height: 20),
+                  const Text(
+                    'PIN-kodni kiriting',
+                    style: TextStyle(fontFamily:'PaynetB', fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Telefon raqamingiz\n+998 95 •••• 30',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontFamily:'PaynetB', fontSize: 14, color: Colors.grey),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  SlideTransition(
+                    position: _offsetAnimation,
+                    child: BlocBuilder<PinBloc, PinState>(
+                      builder: (context, state) {
+                        if (state is PinInput) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(4, (index) {
+                              return Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 8),
+                                width: 12,
+                                height: 12,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: index < state.pin.length
+                                      ? (state.isError ? Colors.red : Colors.green)
+                                      : Colors.grey[300],
+                                ),
+                              );
+                            }),
+                          );
+                        }
+                        return Container();
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    child: Column(
+                      children: [
+                        ...[1, 4, 7].map((i) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: List.generate(3, (j) {
+                              int number = i + j;
+                              return _buildNumberButton(number);
+                            }),
+                          );
+                        }).toList(),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: List.generate(3, (j) {
-                            int number = i + j;
-                            return _buildNumberButton(number);
-                          }),
-                        );
-                      }).toList(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          _buildTextButton('PIN-kodni\nunutding\nizmi?'),
-                          _buildNumberButton(0),
-                          _buildIconButton()
-                        ],
-                      ),
-                    ],
+                          children: [
+                            _buildTextButton('PIN-kodni\nunutding\nizmi?'),
+                            _buildNumberButton(0),
+                            _buildIconButton()
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ],
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
