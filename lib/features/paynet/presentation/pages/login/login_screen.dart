@@ -5,6 +5,7 @@ import 'package:paynet_app_flutter/core/utils/component/text.dart';
 
 import '../../../../../core/utils/component/continue_button.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';
+import '../verification/verification_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -40,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Text("Til", style: TextStyle(fontSize: 18, color: Colors.black,fontWeight: FontWeight.bold)),
+                        const Text("Til", style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold)),
                         const SizedBox(width: 8),
                         Container(
                             decoration: BoxDecoration(
@@ -95,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
-                        onChanged: (text){
+                        onChanged: (text) {
                           setState(() {});
                         },
                         autofocus: true,
@@ -111,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           counterText: "",
                           border: InputBorder.none,
                         ),
-                        style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ),
                     if (_textNumberController.text.isNotEmpty)
@@ -125,9 +126,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const Spacer(),
-              continueButton(clickButton: () {}, disableAndEnable: _textNumberController.text.length == 12, buttonText: "Davom etish"),
+              continueButton(
+                  clickButton: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const VerificationScreen()));
+                  },
+                  disableAndEnable: _textNumberController.text.length == 12,
+                  buttonText: "Davom etish"),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12.0,horizontal: 16),
+                padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16),
                 child: Column(
                   children: [
                     textNormal(text: '"Davom etish" tugamsini bosish orqali men', size: 14, color: Colors.black54),
