@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Text("Til", style: TextStyle(fontSize: 18, color: Colors.black)),
+                        const Text("Til", style: TextStyle(fontSize: 18, color: Colors.black,fontWeight: FontWeight.bold)),
                         const SizedBox(width: 8),
                         Container(
                             decoration: BoxDecoration(
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
                   child: Image.asset("assets/icon/image_crickle_green.jpg", height: 60, width: 60)),
-              textBold(text: "Raqamingizni kiriting", size: 28, color: Colors.black),
+              textBold(text: "Raqamingizni kiriting", size: 24, color: Colors.black),
               textNormal(text: "Mijoz bo'lish yoki kirish uchun", size: 14, color: Colors.black54),
               Container(
                 decoration: BoxDecoration(
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Icon(Icons.keyboard_arrow_down_sharp, color: Colors.black45),
                     Padding(
                       padding: const EdgeInsets.only(top: 2.0),
-                      child: textBold(text: "+998 ", size: 22, color: Colors.black),
+                      child: textBold(text: "+998 ", size: 18, color: Colors.black),
                     ),
                     Expanded(
                       child: TextFormField(
@@ -111,13 +111,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           counterText: "",
                           border: InputBorder.none,
                         ),
-                        style: const TextStyle(fontSize: 22),
+                        style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                       ),
                     ),
                     if (_textNumberController.text.isNotEmpty)
                       GestureDetector(
                           onTap: () {
                             _textNumberController.text = "";
+                            setState(() {});
                           },
                           child: const Icon(Icons.cancel, color: Colors.black38, size: 28)),
                   ],
@@ -126,14 +127,14 @@ class _LoginScreenState extends State<LoginScreen> {
               const Spacer(),
               continueButton(clickButton: () {}, disableAndEnable: _textNumberController.text.length == 12, buttonText: "Davom etish"),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                padding: const EdgeInsets.symmetric(vertical: 12.0,horizontal: 16),
                 child: Column(
                   children: [
-                    textBold(text: '"Davom etish" tugamsini bosish orqali men', size: 16, color: Colors.black54),
-                    linkText(text: "Xizmatlar ko'rsatish haqidagi oferta shartlarini", size: 16, color: Colors.blueAccent, url: ""),
+                    textNormal(text: '"Davom etish" tugamsini bosish orqali men', size: 14, color: Colors.black54),
+                    linkText(text: "Xizmatlar ko'rsatish haqidagi oferta shartlarini", size: 14, color: Colors.blueAccent, url: ""),
                     textAlign(
                         text: "qabul qilaman va shaxsiy malumotlarni qayta ishlashga rozilik bildiraman",
-                        size: 16,
+                        size: 14,
                         color: Colors.black54,
                         align: TextAlign.center)
                   ],
