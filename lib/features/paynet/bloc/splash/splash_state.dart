@@ -1,6 +1,12 @@
 part of 'splash_bloc.dart';
 
-@immutable
-sealed class SplashState {}
+class SplashState {
+  final SplashStatus? status;
 
-final class SplashInitial extends SplashState {}
+  SplashState({this.status});
+
+  SplashState copyWith(
+    final SplashStatus? status,
+  ) =>
+      SplashState(status: status ?? this.status);
+}
