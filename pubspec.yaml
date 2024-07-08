@@ -64,6 +64,28 @@ flutter:
   assets:
     - assets/icon/
     - assets/lotti/
+
+  fonts:
+    - family: MyID
+      fonts:
+        - asset: assets/fonts/myid_bold.ttf
+          weight: 700
+    - family: PaynetM
+      fonts:
+        - asset: assets/fonts/pnfont_medium.ttf
+          weight: 700
+    - family: PaynetB
+      fonts:
+        - asset: assets/fonts/pnfont_semibold.ttf
+          weight: 700
+    - family: Noir
+      fonts:
+        - asset: assets/fonts/noir_std.ttf
+          weight: 700
+    - family: PFair
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-VariableFont_wght.ttf
+          weight: 700
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

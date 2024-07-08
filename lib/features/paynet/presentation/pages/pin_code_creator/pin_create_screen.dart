@@ -98,7 +98,7 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
         ),
         child: Text(
           number.toString(),
-          style: const TextStyle(fontSize: 24, color: Colors.black),
+          style: const TextStyle(fontFamily:'PaynetB',fontSize: 24, color: Colors.black),
         ),
       ),
     );
@@ -110,7 +110,7 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
       child: Text(
         textAlign: TextAlign.center,
         text,
-        style: const TextStyle(fontSize: 12, color: Colors.black),
+        style: const TextStyle(fontFamily:'PaynetB',fontSize: 8, color: Colors.black),
       ),
     );
   }
@@ -135,7 +135,7 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
           children: [
             Column(
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(height: 56),
                 Image.asset(
                   AppImage.logo,
                   height: 100,
@@ -143,13 +143,13 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
                 const SizedBox(height: 20),
                 const Text(
                   'PIN-kodni kiriting',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontFamily:'PaynetB',fontSize: 22, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 const Text(
                   'Telefon raqamingiz\n+998 95 •••• 30',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  style: TextStyle(fontFamily:'PaynetB',fontSize: 14, color: Colors.grey),
                 ),
               ],
             ),
@@ -191,7 +191,7 @@ class _PinScreenState extends State<PinScreen> with SingleTickerProviderStateMix
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          _buildTextButton('PIN-kodni\nunutdingizmi?'),
+                          _buildTextButton('PIN-kodni\nunutding\nizmi?'),
                           _buildNumberButton(0),
                           _buildIconButton()
                         ],
