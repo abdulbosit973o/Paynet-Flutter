@@ -6,6 +6,8 @@ import 'package:paynet_app_flutter/features/paynet/presentation/pages/login/logi
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_status.dart';
 
 import '../../../bloc/splash/splash_bloc.dart';
+import '../../widgets/custom_navigation.dart';
+import '../pin_code/pin_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

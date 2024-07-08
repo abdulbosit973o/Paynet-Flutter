@@ -6,6 +6,7 @@ import 'package:paynet_app_flutter/core/utils/component/text.dart';
 import '../../../../../core/utils/component/continue_button.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';
 import '../verification/verification_screen.dart';
+import 'login_bottom_sheet_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -106,10 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const Icon(Icons.keyboard_arrow_down_sharp, color: Colors.black45),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2.0),
-                      child: textBold(text: "+998 ", size: 18, color: Colors.black),
-                    ),
+                    textBold(text: "+998 ", size: 18, color: Colors.black),
                     Expanded(
                       child: TextFormField(
                         onChanged: (text) {
@@ -128,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           counterText: "",
                           border: InputBorder.none,
                         ),
-                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 18, fontFamily: "PaynetB"),
                       ),
                     ),
                     if (_textNumberController.text.isNotEmpty)
