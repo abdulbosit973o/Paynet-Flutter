@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:paynet_app_flutter/core/utils/colors/app_color.dart';
 import 'package:paynet_app_flutter/core/utils/component/text.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/home_screen.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/pin_code_creator/pin_create_screen.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/verification/verification_screen.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 
 import '../../../../../core/utils/component/continue_button.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';
@@ -124,7 +128,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const Spacer(),
-              continueButton(clickButton: () {}, disableAndEnable: _textNumberController.text.length == 12, buttonText: "Davom etish"),
+              continueButton(clickButton: () {
+CustomNavigation.push(context, const PinCreateScreen());
+              }, disableAndEnable: _textNumberController.text.length == 12, buttonText: "Davom etish"),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Column(

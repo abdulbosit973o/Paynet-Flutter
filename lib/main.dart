@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:paynet_app_flutter/core/utils/hive/hive_helper.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_screen.dart';
 
 import 'features/paynet/bloc/splash/splash_bloc.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  HiveHelper.initializeHive();
   runApp(const MyApp());
 }
 

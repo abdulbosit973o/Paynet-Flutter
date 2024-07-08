@@ -19,3 +19,4 @@ class NumberButtonPressed extends PinEvent {
 class DeleteButtonPressed extends PinEvent {}
 
 class ResetPin extends PinEvent {}
+class NavigateNext extends PinEvent {}

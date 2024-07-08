@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/home_screen.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 import '../../../../../core/utils/assets/app_image.dart';
 import '../../../bloc/pin/pin_bloc.dart';
 import '../../../bloc/pin/pin_event.dart';
@@ -107,7 +109,10 @@ class _PinCreateViewState extends State<PinCreateView> with SingleTickerProvider
                 context.read<PinBloc>().add(ResetPin());
               });
             } else if (state is PinMatch) {
-
+              context.read<PinBloc>().add(NavigateNext());
+            }
+            else if(state is PinSuccess) {
+              CustomNavigation.push(context, const HomeScreen());
             }
           },
           child: Column(

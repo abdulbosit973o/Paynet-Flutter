@@ -1,6 +1,11 @@
 import 'package:bloc/bloc.dart';
+import 'package:paynet_app_flutter/core/utils/constants/constans.dart';
+import 'package:paynet_app_flutter/core/utils/hive/hive_helper.dart';
 import 'package:paynet_app_flutter/features/paynet/bloc/pin/pin_event.dart';
 import 'package:paynet_app_flutter/features/paynet/bloc/pin/pin_state.dart';
+
+import '../../presentation/pages/home/home_screen.dart';
+import '../../presentation/widgets/custom_navigation.dart';
 
 class PinBloc extends Bloc<PinEvent, PinState> {
   List<int> firstPin = [];
@@ -10,6 +15,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     on<NumberButtonPressed>(_onNumberButtonPressed);
     on<DeleteButtonPressed>(_onDeleteButtonPressed);
     on<ResetPin>(_onResetPin);
+    on<NavigateNext>(_onNavigateNext);
   }
 
   void _onNumberButtonPressed(NumberButtonPressed event, Emitter<PinState> emit) {
@@ -52,5 +58,11 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     emit(const PinInput(pin: [], isError: false, isFirstAttempt: true));
     firstPin = [];
     isFirstAttempt = true;
+  }
+  void _onNavigateNext(NavigateNext event, Emitter<PinState> emit) async{
+    await HiveHelper.putData(Constants.password, firstPin.join());
+    await HiveHelper.putData(Constants.isVerified, true);
+    print("_____________________________________________________________ ${firstPin.join()}");
+    emit(PinSuccess());
   }
 }
