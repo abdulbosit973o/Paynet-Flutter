@@ -5,9 +5,9 @@ import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/spl
 
 import 'features/paynet/bloc/splash/splash_bloc.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  HiveHelper.initializeHive();
+  await HiveHelper.initializeHive();
   runApp(const MyApp());
 }
 

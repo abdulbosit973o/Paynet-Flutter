@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/home_screen.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 import '../../../../../core/utils/assets/app_image.dart';
 import '../../../bloc/pin/pin_bloc.dart';
 import '../../../bloc/pin/pin_event.dart';
@@ -13,14 +15,12 @@ class PinScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => PinBloc(),
-      child: const PinView(),
+      child: PinView(),
     );
   }
 }
 
 class PinView extends StatefulWidget {
-  const PinView({super.key});
-
   @override
   _PinViewState createState() => _PinViewState();
 }
@@ -32,6 +32,7 @@ class _PinViewState extends State<PinView> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    context.read<PinBloc>().add(GetUserPassword());
     _controller = AnimationController(
       duration: const Duration(milliseconds: 300),
       vsync: this,
@@ -60,7 +61,7 @@ class _PinViewState extends State<PinView> with SingleTickerProviderStateMixin {
     return Container(
       margin: const EdgeInsets.all(10),
       child: ElevatedButton(
-        onPressed: () => context.read<PinBloc>().add(NumberButtonPressed(number)),
+        onPressed: () => context.read<PinBloc>().add(NumberButtonPressedPin(number)),
         style: ElevatedButton.styleFrom(
           elevation: 0,
           shape: const CircleBorder(),
@@ -109,7 +110,10 @@ class _PinViewState extends State<PinView> with SingleTickerProviderStateMixin {
                 context.read<PinBloc>().add(ResetPin());
               });
             } else if (state is PinMatch) {
-
+              context.read<PinBloc>().add(NavigateNext());
+            }
+            else if(state is PinSuccess) {
+              CustomNavigation.push(context, const HomeScreen());
             }
           },
           child: Column(

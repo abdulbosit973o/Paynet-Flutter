@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:paynet_app_flutter/features/paynet/bloc/login/login_bloc.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/login/login_screen.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/pin_code/pin_screen.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_status.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 
 import '../../../bloc/splash/splash_bloc.dart';
 
@@ -15,13 +17,13 @@ class SplashScreen extends StatelessWidget {
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state.status == SplashStatus.login) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => BlocProvider(
-                        create: (context) => LoginBloc(),
-                        child: const LoginScreen(),
-                      )));
+          CustomNavigation.push(context, BlocProvider(
+            create: (context) => LoginBloc(),
+            child: const LoginScreen(),
+          ));
+        }
+        else if (state.status == SplashStatus.pinCode){
+          CustomNavigation.push(context, const PinScreen());
         }
       },
       builder: (context, state) {
