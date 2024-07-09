@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/pin_code_creator/pin_create_screen.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -74,7 +76,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 padding: EdgeInsets.symmetric(vertical: 2.0),
                 child: Text(
                   'SMSdagi kodni kiriting',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                  style: TextStyle(fontFamily:"PaynetB",fontWeight: FontWeight.bold, fontSize: 22),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -85,8 +87,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: "${widget.phoneNumber}",
-                        style: const TextStyle(
+                        text: "+998 ${widget.phoneNumber}",
+                        style: const TextStyle(fontFamily:"PaynetB",
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -94,13 +96,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       ),
                       const TextSpan(
                         text: " raqamiga yubordik",
-                        style: TextStyle(
+                        style: TextStyle(fontFamily:"PaynetB",
                           color: Colors.black,
                           fontSize: 15,
                         ),
                       ),
                     ],
-                    style: const TextStyle(
+                    style: const TextStyle(fontFamily:"PaynetB",
                       color: Colors.black54,
                       fontSize: 15,
                     ),
@@ -120,7 +122,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                   child: PinCodeTextField(
                     appContext: context,
-                    pastedTextStyle: TextStyle(
+                    pastedTextStyle: TextStyle(fontFamily:"PaynetB",
                       color: Colors.green.shade600,
                       fontWeight: FontWeight.bold,
                     ),
@@ -172,7 +174,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 child: Center(
                   child: Text(
                     hasError ? "Noto\'g\'ri kod" : "",
-                    style: const TextStyle(
+                    style: const TextStyle(fontFamily:"PaynetB",
                       color: Colors.red,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
@@ -212,6 +214,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         setState(
                               () {
                             hasError = false;
+                            CustomNavigation.push(context, const PinCreateScreen());
                             snackBar("OTP Verified!!");
                           },
                         );
@@ -220,7 +223,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     child: Center(
                       child: Text(
                         "VERIFY".toUpperCase(),
-                        style: const TextStyle(
+                        style: const TextStyle(fontFamily:"PaynetB",
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

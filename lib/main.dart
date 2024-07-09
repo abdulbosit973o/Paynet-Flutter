@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:paynet_app_flutter/core/utils/hive/hive_helper.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/home_screen.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_screen.dart';
 
+import 'core/utils/colors/app_color.dart';
+import 'core/utils/hive/hive_helper.dart';
 import 'features/paynet/bloc/splash/splash_bloc.dart';
 
 void main() async {
@@ -21,13 +21,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Color(0xffffffff),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: const Color(0xffffffff),
+        colorScheme: ColorScheme.fromSeed(seedColor: enableButtonColor),
         useMaterial3: true,
       ),
       home: BlocProvider(
         create: (context) => SplashBloc()..add(SplashEvent()),
-        child: const HomeScreen(),
+        child: const SplashScreen(),
       ),
     );
   }
