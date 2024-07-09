@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:paynet_app_flutter/core/utils/colors/app_color.dart';
 import 'package:paynet_app_flutter/core/utils/component/text.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 
 import '../../../../../core/utils/component/continue_button.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';
@@ -142,8 +143,9 @@ class _LoginScreenState extends State<LoginScreen> {
               const Spacer(),
               continueButton(
                   clickButton: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) =>  VerificationScreen(phoneNumber: _textNumberController.text,)));
-                  },
+                    if(_textNumberController.text.length == 12) {
+                      CustomNavigation.push(context, const VerificationScreen());
+                    }                  },
                   disableAndEnable: _textNumberController.text.length == 12,
                   buttonText: "Davom etish"),
               Padding(

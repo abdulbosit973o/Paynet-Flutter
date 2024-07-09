@@ -7,6 +7,7 @@ import 'core/utils/hive/hive_helper.dart';
 import 'features/paynet/bloc/splash/splash_bloc.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await HiveHelper.initializeHive();
   runApp(const MyApp());

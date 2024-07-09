@@ -17,7 +17,7 @@ class SplashScreen extends StatelessWidget {
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state.status == SplashStatus.login) {
-          CustomNavigation.push(context, BlocProvider(
+          CustomNavigation.pushReplacement(context, BlocProvider(
             create: (context) => LoginBloc(),
             child: const LoginScreen(),
           ));

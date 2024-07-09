@@ -11,7 +11,7 @@ part 'splash_state.dart';
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashState()) {
     on<SplashEvent>((event, emit) async {
-      Future.delayed(const Duration(seconds: 2));
+      Future.delayed(const Duration(seconds: 10));
       dynamic isVerified = await HiveHelper.getData(Constants.isVerified);
       if(isVerified.runtimeType == bool) {
         bool isVerify = isVerified as bool;
