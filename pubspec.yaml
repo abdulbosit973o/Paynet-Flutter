@@ -43,6 +43,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   link_text: ^0.2.1
   pin_code_fields: ^8.0.1
+  badges: ^3.1.2
 
 dev_dependencies:
   flutter_test:

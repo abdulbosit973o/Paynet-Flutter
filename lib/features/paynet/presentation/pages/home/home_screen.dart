@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/history/history_page.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/main_page.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/paynet/payment_page.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/transfer/transfer_page.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/widgets/home_bottom_navigation_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,12 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
         _selectedIndex = index;
         setState(() {});
       },),
-      body: IndexedStack(
-        children: [
-          Container(color: Colors.green,),
-          Container(color: Colors.red,),
-          Container(color: Colors.blue,),
-          Container(color: Colors.black,)
+      body:  IndexedStack(
+        index:_selectedIndex,
+        children: const [
+          MainPage(),
+          TransferPage(),
+          PaymentPage(),
+          HistoryPage()
         ],
       ),
 
