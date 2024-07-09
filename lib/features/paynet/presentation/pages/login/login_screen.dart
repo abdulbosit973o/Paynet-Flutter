@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:paynet_app_flutter/core/utils/colors/app_color.dart';
 import 'package:paynet_app_flutter/core/utils/component/text.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 
+import '../../../../../core/utils/colors/lingth_colors.dart';
 import '../../../../../core/utils/component/continue_button.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';
 import '../verification/verification_screen.dart';
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        color: inputContainerColor,
+                        color: LightColors.inputContainerColor,
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       margin: const EdgeInsets.only(top: 16),
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
-                                color: inputContainerColor,
+                                color: LightColors.inputContainerColor,
                               ),
                               child: Image.asset(
                                 "assets/icon/uz.png",
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  color: inputContainerColor,
+                  color: LightColors.inputContainerColor,
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
                 margin: const EdgeInsets.symmetric(vertical: 24),
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: inputContainerColor,
+                        color: LightColors.inputContainerColor,
                       ),
                       child: Image.asset(
                         "assets/icon/uz.png",

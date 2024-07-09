@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_screen.dart';
 
-import 'core/utils/colors/app_color.dart';
+import 'core/utils/colors/lingth_colors.dart';
 import 'core/utils/hive/hive_helper.dart';
 import 'features/paynet/bloc/splash/splash_bloc.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor:  Color(0xfff4f4f4),
-        colorScheme: ColorScheme.fromSeed(seedColor: enableButtonColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: LightColors.enableButtonColor),
         useMaterial3: true,
       ),
       home: BlocProvider(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:paynet_app_flutter/core/utils/colors/lingth_colors.dart';
 
-import '../colors/app_color.dart';
 
 Widget continueButton({required VoidCallback clickButton, required bool disableAndEnable, required String buttonText}) {
   return GestureDetector(
@@ -8,10 +8,10 @@ Widget continueButton({required VoidCallback clickButton, required bool disableA
     child: Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        color: (disableAndEnable) ? enableButtonColor : disableButtonColor,
+        color: (disableAndEnable) ? LightColors.enableButtonColor : LightColors.disableButtonColor,
       ),
       padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Center(child: Text(buttonText, style: TextStyle(color: (disableAndEnable) ? Colors.white : disableButtonTextColor, fontSize: 18,fontFamily: "PaynetB"))),
+      child: Center(child: Text(buttonText, style: TextStyle(color: (disableAndEnable) ? Colors.white :LightColors.disableButtonTextColor, fontSize: 18,fontFamily: "PaynetB"))),
     ),
   );
 }

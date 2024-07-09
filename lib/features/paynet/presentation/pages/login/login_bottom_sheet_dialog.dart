@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/colors/app_color.dart';
+import '../../../../../core/utils/colors/lingth_colors.dart';
 import '../../../../../core/utils/component/text.dart';
 
 Widget loginBottomSheetDialog(
@@ -18,7 +18,7 @@ Widget loginBottomSheetDialog(
           height: 6,
           width: 40,
           margin: const EdgeInsets.symmetric(vertical: 10),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: inputContainerColor),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: LightColors.inputContainerColor),
         ),
         Row(
           children: [
@@ -29,7 +29,7 @@ Widget loginBottomSheetDialog(
               child: Container(
                 width: 28,
                 height: 28,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(14), color: inputContainerColor),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(14), color: LightColors.inputContainerColor),
                 child: const Center(
                   child: Icon(
                     Icons.close,
@@ -48,14 +48,14 @@ Widget loginBottomSheetDialog(
             height: 56,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white, boxShadow: [
-              if (!uzAndRuLanguage) BoxShadow(offset: const Offset(1.0, 1.0), color: inputContainerColor, blurRadius: 10, spreadRadius: 1),
+              if (!uzAndRuLanguage) BoxShadow(offset: const Offset(1.0, 1.0), color: LightColors.inputContainerColor, blurRadius: 10, spreadRadius: 1),
             ]),
             child: Row(
               children: [
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: inputContainerColor,
+                    color: LightColors.inputContainerColor,
                   ),
                   child: Image.asset(
                     "assets/icon/ru.png",
@@ -66,7 +66,7 @@ Widget loginBottomSheetDialog(
                 ),
                 const SizedBox(width: 8),
                 Expanded(child: textBold(text: "Русский", size: 18, color: Colors.black)),
-                if (!uzAndRuLanguage) Icon(Icons.check, color: enableButtonColor)
+                if (!uzAndRuLanguage) Icon(Icons.check, color: LightColors.enableButtonColor)
               ],
             ),
           ),
@@ -81,7 +81,7 @@ Widget loginBottomSheetDialog(
               if (uzAndRuLanguage)
                 BoxShadow(
                   offset: const Offset(1.0, 1.0),
-                  color: inputContainerColor,
+                  color: LightColors.inputContainerColor,
                   blurRadius: 10,
                   spreadRadius: 1,
                 ),
@@ -91,7 +91,7 @@ Widget loginBottomSheetDialog(
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: inputContainerColor,
+                    color: LightColors.inputContainerColor,
                   ),
                   child: Image.asset(
                     "assets/icon/uz.png",
@@ -102,7 +102,7 @@ Widget loginBottomSheetDialog(
                 ),
                 const SizedBox(width: 8),
                 Expanded(child: textBold(text: "O'zbek", size: 18, color: Colors.black)),
-                if (uzAndRuLanguage) Icon(Icons.check, color: enableButtonColor)
+                if (uzAndRuLanguage) Icon(Icons.check, color: LightColors.enableButtonColor)
               ],
             ),
           ),
