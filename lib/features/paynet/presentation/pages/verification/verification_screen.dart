@@ -122,6 +122,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                   child: PinCodeTextField(
                     appContext: context,
+
                     pastedTextStyle: TextStyle(fontFamily:"PaynetB",
                       color: Colors.green.shade600,
                       fontWeight: FontWeight.bold,
@@ -132,10 +133,17 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     animationType: AnimationType.fade,
                     pinTheme: PinTheme(
                       shape: PinCodeFieldShape.box,
-                      borderRadius: BorderRadius.circular(5),
-                      fieldHeight: 50,
-                      fieldWidth: 40,
-                      activeFillColor: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      fieldHeight: 55,
+                      fieldWidth: 45,
+
+                      inactiveFillColor: const Color(0xffecedef),
+                      activeColor: const Color(0xffecedef),
+                      selectedFillColor: const Color(0xffecedef),
+                      inactiveColor: const Color(0xffecedef),
+
+                      activeFillColor: const Color(0xffecedef),
+                      selectedColor: const Color(0xffecedef),
                     ),
                     cursorColor: Colors.black,
                     animationDuration: const Duration(milliseconds: 300),

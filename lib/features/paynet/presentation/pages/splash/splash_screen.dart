@@ -17,19 +17,24 @@ class SplashScreen extends StatelessWidget {
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state.status == SplashStatus.login) {
-          CustomNavigation.pushReplacement(context, BlocProvider(
-            create: (context) => LoginBloc(),
-            child: const LoginScreen(),
-          ));
-        }
-        else if (state.status == SplashStatus.pinCode){
+          CustomNavigation.pushReplacement(
+              context,
+              BlocProvider(
+                create: (context) => LoginBloc(),
+                child: const LoginScreen(),
+              ));
+        } else if (state.status == SplashStatus.pinCode) {
           CustomNavigation.push(context, const PinScreen());
         }
       },
       builder: (context, state) {
         return Scaffold(
-          body: Lottie.asset("assets/lotti/splash.json", fit: BoxFit.cover, height: double.infinity, width: double.infinity),
-        );
+            body: Lottie.asset(
+          "assets/lotti/splash.json",
+          fit: BoxFit.cover,
+          height: double.infinity,
+          width: double.infinity,
+        ));
       },
     );
   }
