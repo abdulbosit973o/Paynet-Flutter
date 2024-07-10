@@ -48,6 +48,7 @@ dependencies:
   badges: ^3.1.2
   flutter_svg: ^2.0.10+1
   intl: ^0.19.0
+  customtimerbutton: ^0.1.21
 
 dev_dependencies:
   flutter_test:

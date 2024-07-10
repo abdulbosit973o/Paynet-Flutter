@@ -21,7 +21,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     on<NavigateNext>(_onNavigateNext);
   }
 
-  void _onNumberButtonPressed(NumberButtonPressed event, Emitter<PinState> emit) {
+  void _onNumberButtonPressed(NumberButtonPressed event, Emitter<PinState> emit) async {
     if (state is PinInput) {
       final currentState = state as PinInput;
       final updatedPin = List<int>.from(currentState.pin)..add(event.number);
@@ -33,6 +33,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
           emit(const PinInput(pin: [], isError: false, isFirstAttempt: false));
         } else {
           if (updatedPin.toString() == firstPin.toString()) {
+            await HiveHelper.putData(Constants.password, firstPin.join());
             emit(PinMatch());
           } else {
             emit(PinError());
@@ -47,7 +48,7 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     }
   }
 
-  void _onNumberButtonPressedPin(NumberButtonPressedPin event, Emitter<PinState> emit) {
+  void _onNumberButtonPressedPin(NumberButtonPressedPin event, Emitter<PinState> emit) async {
     if (state is PinInput) {
       final currentState = state as PinInput;
       final updatedPin = List<int>.from(currentState.pin)..add(event.number);
@@ -83,7 +84,6 @@ class PinBloc extends Bloc<PinEvent, PinState> {
     isFirstAttempt = true;
   }
   void _onNavigateNext(NavigateNext event, Emitter<PinState> emit) async{
-    await HiveHelper.putData(Constants.password, firstPin.join());
     await HiveHelper.putData(Constants.isVerified, true);
     print("_____________________________________________________________ ${firstPin.join()}");
     emit(PinSuccess());
