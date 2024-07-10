@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/pages/pin_code_creator/pin_create_screen.dart';
-import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/verification/widgets/timer_button.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import '../../widgets/custom_navigation.dart';
+import '../pin_code_creator/pin_create_screen.dart';
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({
@@ -76,7 +78,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 padding: EdgeInsets.symmetric(vertical: 2.0),
                 child: Text(
                   'SMSdagi kodni kiriting',
-                  style: TextStyle(fontFamily:"PaynetB",fontWeight: FontWeight.bold, fontSize: 22),
+                  style: TextStyle(
+                      fontFamily: "PaynetB",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -88,7 +93,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     children: [
                       TextSpan(
                         text: "+998 ${widget.phoneNumber}",
-                        style: const TextStyle(fontFamily:"PaynetB",
+                        style: const TextStyle(
+                          fontFamily: "PaynetB",
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -96,13 +102,15 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       ),
                       const TextSpan(
                         text: " raqamiga yubordik",
-                        style: TextStyle(fontFamily:"PaynetB",
+                        style: TextStyle(
+                          fontFamily: "PaynetB",
                           color: Colors.black,
                           fontSize: 15,
                         ),
                       ),
                     ],
-                    style: const TextStyle(fontFamily:"PaynetB",
+                    style: const TextStyle(
+                      fontFamily: "PaynetB",
                       color: Colors.black54,
                       fontSize: 15,
                     ),
@@ -123,7 +131,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   child: PinCodeTextField(
                     appContext: context,
 
-                    pastedTextStyle: TextStyle(fontFamily:"PaynetB",
+                    pastedTextStyle: TextStyle(
+                      fontFamily: "PaynetB",
                       color: Colors.green.shade600,
                       fontWeight: FontWeight.bold,
                     ),
@@ -182,7 +191,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 child: Center(
                   child: Text(
                     hasError ? "Noto\'g\'ri kod" : "",
-                    style: const TextStyle(fontFamily:"PaynetB",
+                    style: const TextStyle(
+                      fontFamily: "PaynetB",
                       color: Colors.red,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
@@ -191,10 +201,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ),
               ),
               const Spacer(),
-
               Container(
                 margin:
-                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30),
+                    const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30),
                 decoration: BoxDecoration(
                     color: Colors.green.shade300,
                     borderRadius: BorderRadius.circular(5),
@@ -213,16 +222,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   child: TextButton(
                     onPressed: () {
                       formKey.currentState!.validate();
-                      // conditions for validating
                       if (currentText.length != 6 || currentText != "123456") {
                         errorController!.add(ErrorAnimationType
                             .shake); // Triggering error shake animation
                         setState(() => hasError = true);
                       } else {
                         setState(
-                              () {
+                          () {
                             hasError = false;
-                            CustomNavigation.push(context, const PinCreateScreen());
+                            CustomNavigation.push(
+                                context, const PinCreateScreen());
                             snackBar("OTP Verified!!");
                           },
                         );
@@ -231,7 +240,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     child: Center(
                       child: Text(
                         "VERIFY".toUpperCase(),
-                        style: const TextStyle(fontFamily:"PaynetB",
+                        style: const TextStyle(
+                          fontFamily: "PaynetB",
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -241,9 +251,59 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                 ),
               ),
+              Center(
+                child: ctmTimeButtom(
+                    text: 'Click here',
+                    disableText: 'Retry in',
+                    width: double.infinity,
+                    onPressed: () {},
+                    time: 180,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            bottomLeft: Radius.circular(20))),
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20), bottomLeft: Radius.circular(20))),
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget ctmTimeButtom({
+    required final String text,
+    required final String disableText,
+    final Color? color,
+    required void Function() onPressed,
+    final BorderRadius? borderRadius,
+    final double? width,
+    final ShapeBorder? shape,
+    final double? elevation,
+    int? time,
+  }) {
+    return TimerButton(
+      label: text,
+      textAlign: TextAlign.center,
+      disabledLabel: disableText,
+      color: color ?? Colors.red,
+      shape: shape,
+      width: width,
+      height: 55,
+      timeOutInSeconds: time ?? 5,
+      elevation: 18,
+      borderRadius: borderRadius,
+      onPressed: onPressed,
+      disabledTextStyle: const TextStyle(
+        fontSize: 17,
+        color: Colors.black38,
+        fontWeight: FontWeight.bold,
+      ),
+      activeTextStyle: const TextStyle(
+        color: Colors.white,
+        fontSize: 17,
+        fontWeight: FontWeight.bold,
       ),
     );
   }

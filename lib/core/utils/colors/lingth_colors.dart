@@ -14,4 +14,8 @@ class LightColors {
   static Color colorGreyLight = const Color(0xffc8c9ce);
   static Color colorGrey = const Color(0xff6f7171);
   static Color pinItemColor = const Color(0xffecedef);
+  static Color listItem1 = const Color(0xff44e87b);
+  static Color listItem2 = const Color(0xff2af399);
+  static Color listItem3 = const Color(0xff15fcaf);
+
 }
