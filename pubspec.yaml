@@ -82,6 +82,10 @@ flutter:
       fonts:
         - asset: assets/fonts/myid_bold.ttf
           weight: 700
+    - family: PaynetL
+      fonts:
+        - asset: assets/fonts/pnfont_medium.ttf
+          weight: 700
     - family: PaynetM
       fonts:
         - asset: assets/fonts/pnfont_medium.ttf

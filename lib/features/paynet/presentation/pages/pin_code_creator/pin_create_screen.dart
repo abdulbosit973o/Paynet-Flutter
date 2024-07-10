@@ -15,12 +15,14 @@ class PinCreateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => PinBloc(),
-      child: PinCreateView(),
+      child: const PinCreateView(),
     );
   }
 }
 
 class PinCreateView extends StatefulWidget {
+  const PinCreateView({super.key});
+
   @override
   _PinCreateViewState createState() => _PinCreateViewState();
 }
