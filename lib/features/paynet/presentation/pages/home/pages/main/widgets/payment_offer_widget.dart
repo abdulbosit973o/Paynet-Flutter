@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:paynet_app_flutter/core/utils/colors/lingth_colors.dart';
-import 'package:paynet_app_flutter/core/utils/component/text.dart';
+import 'package:paynet_app_flutter/core/utils/component/text_my_font.dart';
 
 import '../../../../../../../../core/utils/formater/nuber_format.dart';
 
@@ -107,16 +107,16 @@ class PaymentOfferWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      textNormal(
+                      TextMyFont.textNormal(
                           text: "Sizning darajangiz: Tajribali",
                           size: 12,
                           color: LightColors.colorGrey),
                       Row(
                         children: [
-                          textBold(
+                          TextMyFont.textBold(
                               text: '3', size: 20, color: LightColors.black),
                           const SizedBox(width: 4),
-                          textBold(
+                          TextMyFont.textBold(
                               text: "tanga",
                               size: 16,
                               color: LightColors.colorGreyLight),
@@ -137,7 +137,7 @@ class PaymentOfferWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      textNormal(
+                      TextMyFont.textNormal(
                           text: "397 qoldi keyingi bosqichga",
                           size: 12,
                           color: LightColors.colorGrey),
