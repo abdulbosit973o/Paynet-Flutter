@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/home_common_widget.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/main_app_bar.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/my_money_widget.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/payment_card_widget.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/payment_offer_widget.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/security_auth_widget.dart';
+
+import '../../../../../../../core/utils/assets/app_image.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -37,6 +41,64 @@ class MainPage extends StatelessWidget {
                 paymentCartFour: "9999",
                 money: 111111,
                 moneyIsHasEye: true),
+            const SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: CommonCard(
+                title: 'Paynetda xavfsizlik',
+                subtitle: 'Xavfsizlikni oshirishni xohlaysizmi?',
+                buttonText: 'Shaxsingizni tasdiqlang',
+                backgroundGradient: const LinearGradient(
+                  colors: [Color(0xFF1DE81D), Color(0xFF91FF91)],
+                ),
+                onContainerTap: () {
+                  print('Container tapped');
+                },
+                imagePath: AppImage.avia,
+                onButtonTap: () {
+                  print('Button tapped');
+                },
+              ),
+            ),
+            const SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: CommonCard(
+                title: "O'z uyingizni yarating",
+                subtitle: "Kommunal xizmatlarni to'lang va balansingizni kuzatib boring",
+                buttonText: "Uyni yaratish",
+                backgroundGradient: const LinearGradient(
+                  colors: [Color(0xFF14a558), Color(0xFF55bd88)],
+                ),
+                onContainerTap: () {
+                  print('Container tapped');
+                },
+                imagePath: AppImage.avia,
+                onButtonTap: () {
+                  print('Button tapped');
+                },
+              ),
+            ),
+            const SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: CommonCard(
+                title: 'Qarzdorlikni bilib oling',
+                subtitle: 'ilovada Soliq va MIB dan',
+                buttonText: 'Shaxsni tasdiqlang',
+                backgroundGradient: const LinearGradient(
+                  colors: [Color(0xFFeaf4fe), Color(0xFFeaf4fe)],
+                ),
+                onContainerTap: () {
+                  print('Container tapped');
+                },
+                imagePath: AppImage.avia,
+                onButtonTap: () {
+                  print('Button tapped');
+                },
+              ),
+            ),
+            const SizedBox(height: 12),
           ],
         ),
       ),

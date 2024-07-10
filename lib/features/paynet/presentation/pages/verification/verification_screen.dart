@@ -251,20 +251,20 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   ),
                 ),
               ),
-              Center(
-                child: ctmTimeButtom(
-                    text: 'Click here',
-                    disableText: 'Retry in',
-                    width: double.infinity,
-                    onPressed: () {},
-                    time: 180,
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomLeft: Radius.circular(20))),
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20), bottomLeft: Radius.circular(20))),
-              ),
+              // Center(
+              //   child: ctmTimeButtom(
+              //       text: 'Click here',
+              //       disableText: 'Retry in',
+              //       width: double.infinity,
+              //       onPressed: () {},
+              //       time: 180,
+              //       shape: const RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.only(
+              //               topLeft: Radius.circular(20),
+              //               bottomLeft: Radius.circular(20))),
+              //       borderRadius: const BorderRadius.only(
+              //           topLeft: Radius.circular(20), bottomLeft: Radius.circular(20))),
+              // ),
             ],
           ),
         ),

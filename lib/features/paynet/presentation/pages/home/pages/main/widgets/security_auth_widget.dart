@@ -17,11 +17,12 @@ class SecurityAuthWidget extends StatelessWidget {
     ];
     return Container(
       decoration: BoxDecoration(
+          color: LightColors.enableButtonColor,
           gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
               colors:authWidget)),
-      color: LightColors.enableButtonColor,
+
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         child: GestureDetector(

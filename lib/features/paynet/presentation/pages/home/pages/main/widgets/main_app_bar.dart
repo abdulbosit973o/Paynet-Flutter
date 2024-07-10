@@ -19,6 +19,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: const Row(
         children: [
           Text("+998930720405",style: TextStyle(
+            fontFamily: 'PaynetB',
             color: Color(0xff1f2025),
             fontSize: 18,
             fontWeight: FontWeight.w500
