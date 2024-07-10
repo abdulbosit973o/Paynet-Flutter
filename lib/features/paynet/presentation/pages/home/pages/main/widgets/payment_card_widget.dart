@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:paynet_app_flutter/core/utils/colors/lingth_colors.dart';
-import 'package:paynet_app_flutter/core/utils/component/text.dart';
 
+import '../../../../../../../../core/utils/component/text_my_font.dart';
 import '../../../../../../../../core/utils/formater/nuber_format.dart';
 
 class PaymentCardWidget extends StatelessWidget {
@@ -43,7 +43,7 @@ class PaymentCardWidget extends StatelessWidget {
                 width: 28,
                 colorFilter: ColorFilter.mode(LightColors.enableButtonColor, BlendMode.srcIn),
               ),
-              textBold(text: text, size: 14, color: LightColors.black)
+              TextMyFont.textBold(text: text, size: 14, color: LightColors.black)
             ],
           ),
         ),
@@ -65,9 +65,9 @@ class PaymentCardWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                textBold(text: "Paynet karta", size: 16, color: LightColors.black),
+                TextMyFont.textBold(text: "Paynet karta", size: 16, color: LightColors.black),
                 const Spacer(),
-                GestureDetector(onTap: clickWhatIsThis, child: textBold(text: "Bu nima?", size: 16, color: LightColors.enableButtonColor)),
+                GestureDetector(onTap: clickWhatIsThis, child: TextMyFont.textBold(text: "Bu nima?", size: 16, color: LightColors.enableButtonColor)),
               ],
             ),
             Padding(
@@ -82,12 +82,12 @@ class PaymentCardWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      textNormal(text: "Paynet karta• $paymentCartFour", size: 14, color: LightColors.colorGrey),
+                      TextMyFont.textNormal(text: "Paynet karta• $paymentCartFour", size: 14, color: LightColors.colorGrey),
                       Row(
                         children: [
-                          textBold(text: (moneyIsHasEye) ? formatInt(money) : ". ...", size: 18, color: LightColors.black),
+                          TextMyFont.textBold(text: (moneyIsHasEye) ? formatInt(money) : ". ...", size: 18, color: LightColors.black),
                           const SizedBox(width: 4),
-                          textBold(text: "so'm", size: 18, color: LightColors.colorGreyLight),
+                          TextMyFont.textBold(text: "so'm", size: 18, color: LightColors.colorGreyLight),
                         ],
                       ),
                     ],

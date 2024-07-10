@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:paynet_app_flutter/core/utils/colors/lingth_colors.dart';
-import 'package:paynet_app_flutter/core/utils/component/text.dart';
+import 'package:paynet_app_flutter/core/utils/component/text_my_font.dart';
 import 'package:paynet_app_flutter/core/utils/formater/nuber_format.dart';
 
 class MyMoneyWidget extends StatelessWidget {
@@ -18,12 +18,12 @@ class MyMoneyWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          textNormal(text: "Mening pulim", size: 14, color: LightColors.colorGreyLight),
+          TextMyFont.textNormal(text: "Mening pulim", size: 14, color: LightColors.colorGreyLight),
           Row(
             children: [
-              textBold(text: (moneyIsHasEye) ? formatInt(money) : ". ...", size: 26, color: LightColors.black),
+              TextMyFont.textBold(text: (moneyIsHasEye) ? formatInt(money) : ". ...", size: 26, color: LightColors.black),
               const SizedBox(width: 8),
-              textBold(text: "so'm", size: 24, color: LightColors.colorGreyLight),
+              TextMyFont.textBold(text: "so'm", size: 24, color: LightColors.colorGreyLight),
               const Spacer(),
               IconButton(
                 onPressed: clickEye,
