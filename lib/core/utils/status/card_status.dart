@@ -4,5 +4,7 @@ enum CardStatus {
   mir,
   visa,
   mastercard,
-  unknown,
+  unknown;
+
 }
+

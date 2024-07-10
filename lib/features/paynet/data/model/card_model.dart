@@ -10,7 +10,7 @@ class CardModel extends HiveObject {
   @HiveField(1)
   final String cardYear;
   @HiveField(2)
-  final CardStatus cardStatus;
+  final String cardStatus;
   @HiveField(3)
   final int cardParse;
   @HiveField(4)

@@ -13,8 +13,19 @@ class MyCardsWidget extends StatelessWidget {
   final List<CardModel> cardList;
   final bool moneyIsHasEye;
   final int keshbekMoney;
+  final VoidCallback clickCard1;
+  final VoidCallback clickCard2;
+  final VoidCallback clickAllCard;
 
-  const MyCardsWidget({super.key, required this.clickAddCard, required this.cardList, required this.moneyIsHasEye, required this.keshbekMoney});
+  const MyCardsWidget(
+      {super.key,
+      required this.clickAddCard,
+      required this.cardList,
+      required this.moneyIsHasEye,
+      required this.keshbekMoney,
+      required this.clickCard1,
+      required this.clickCard2,
+      required this.clickAllCard});
 
   Widget _emptyCard({required VoidCallback clickCard}) {
     return GestureDetector(
@@ -36,7 +47,7 @@ class MyCardsWidget extends StatelessWidget {
     );
   }
 
-  Widget _oneCard({required VoidCallback clickCard}) {
+  Widget _oneCard({required VoidCallback clickCard, required VoidCallback clickAddCard}) {
     var cardData = cardList[0];
     var status = cardData.cardStatus;
     return Container(
@@ -47,57 +58,187 @@ class MyCardsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: Container(
-               child: Center(child: TextMyFont.textNormal(text: "Karta qo'shish", size: 14, color: LightColors.black))),
+            child: GestureDetector(
+              onTap: clickAddCard,
+              child: SizedBox(
+                height: double.infinity,
+                  width: double.infinity,
+                  child: Center(child: TextMyFont.textNormal(text: "Karta qo'shish", size: 14, color: LightColors.black))),
+            ),
           ),
-          Container(
-            height: 100,
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(gradient: CardGradient.gradient[cardData.gradientIndex], borderRadius: BorderRadius.circular(16)),
-            child: (Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+          GestureDetector(
+            onTap: clickCard,
+            child: Container(
+              height: 100,
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(gradient: CardGradient.gradient[cardData.gradientIndex], borderRadius: BorderRadius.circular(16)),
+              child: (Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Image.asset(
+                        "assets/icon/ue_flag.png",
+                        height: 24,
+                        width: 24,
+                      ),
+                      const Spacer(),
+                      Image.asset(
+                        "assets/icon/ic_text_humo.png",
+                        height: 28,
+                        width: 60,
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      TextMyFont.textBold(text: (moneyIsHasEye) ? formatInt(cardData.cardParse) : ". ...", size: 14, color: LightColors.white),
+                      const SizedBox(width: 8),
+                      TextMyFont.textBold(text: "so'm", size: 14, color: LightColors.colorGreyLight),
+                    ],
+                  ),
+                  const Spacer(),
+                  TextMyFont.textBold(
+                      text: (status == CardStatus.humo.name)
+                          ? "HUMO"
+                          : (status == CardStatus.mastercard.name)
+                              ? "MASTERCARD"
+                              : (status == CardStatus.uzcard.name)
+                                  ? "UZCARD"
+                                  : (status == CardStatus.mir.name)
+                                      ? "Mir"
+                                      : (status == CardStatus.visa.name)
+                                          ? "VISA"
+                                          : "UNKNOWN",
+                      size: 14,
+                      color: LightColors.white)
+                ],
+              )),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _allCard({required VoidCallback clickCard1, required VoidCallback clickCard2}) {
+    var cardData1 = cardList[0];
+    var cardData2 = cardList[1];
+    return Container(
+      width: double.infinity,
+      // margin: const EdgeInsets.all(12),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: LightColors.mainBackgroundColor),
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: GestureDetector(
+              onTap: clickCard1,
+              child: Container(
+                height: 96,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(gradient: CardGradient.gradient[cardData1.gradientIndex], borderRadius: BorderRadius.circular(16)),
+                child: (Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      "assets/icon/ue_flag.png",
-                      height: 24,
-                      width: 24,
+                    Row(
+                      children: [
+                        Image.asset(
+                          "assets/icon/ue_flag.png",
+                          height: 24,
+                          width: 24,
+                        ),
+                        const Spacer(),
+                        Image.asset(
+                          "assets/icon/ic_text_humo.png",
+                          height: 28,
+                          width: 60,
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      children: [
+                        TextMyFont.textBold(text: (moneyIsHasEye) ? formatInt(cardData1.cardParse) : ". ...", size: 14, color: LightColors.white),
+                        const SizedBox(width: 8),
+                        TextMyFont.textBold(text: "so'm", size: 14, color: LightColors.colorGreyLight),
+                      ],
                     ),
                     const Spacer(),
-                    Image.asset(
-                      "assets/icon/ic_text_humo.png",
-                      height: 28,
-                      width: 60,
-                    )
+                    TextMyFont.textBold(
+                        text: (cardData1.cardStatus == CardStatus.humo.name)
+                            ? "HUMO"
+                            : (cardData1.cardStatus == CardStatus.mastercard.name)
+                                ? "MASTERCARD"
+                                : (cardData1.cardStatus == CardStatus.uzcard.name)
+                                    ? "UZCARD"
+                                    : (cardData1.cardStatus == CardStatus.mir.name)
+                                        ? "Mir"
+                                        : (cardData1.cardStatus == CardStatus.visa.name)
+                                            ? "VISA"
+                                            : "UNKNOWN",
+                        size: 14,
+                        color: LightColors.white)
                   ],
-                ),
-                const SizedBox(height: 8),
-                Row(
+                )),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: GestureDetector(
+              onTap: clickCard2,
+              child: Container(
+                height: 96,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(gradient: CardGradient.gradient[cardData2.gradientIndex], borderRadius: BorderRadius.circular(16)),
+                child: (Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextMyFont.textBold(text: (moneyIsHasEye) ? formatInt(cardData.cardParse) : ". ...", size: 14, color: LightColors.white),
-                    const SizedBox(width: 8),
-                    TextMyFont.textBold(text: "so'm", size: 14, color: LightColors.colorGreyLight),
+                    Row(
+                      children: [
+                        Image.asset(
+                          "assets/icon/ue_flag.png",
+                          height: 24,
+                          width: 24,
+                        ),
+                        const Spacer(),
+                        Image.asset(
+                          "assets/icon/ic_text_humo.png",
+                          height: 28,
+                          width: 60,
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      children: [
+                        TextMyFont.textBold(text: (moneyIsHasEye) ? formatInt(cardData2.cardParse) : ". ...", size: 14, color: LightColors.white),
+                        const SizedBox(width: 8),
+                        TextMyFont.textBold(text: "so'm", size: 14, color: LightColors.colorGreyLight),
+                      ],
+                    ),
+                    const Spacer(),
+                    TextMyFont.textBold(
+                        text: (cardData2.cardStatus == CardStatus.humo)
+                            ? "HUMO"
+                            : (cardData2.cardStatus == CardStatus.mastercard)
+                                ? "MASTERCARD"
+                                : (cardData2.cardStatus == CardStatus.uzcard)
+                                    ? "UZCARD"
+                                    : (cardData2.cardStatus == CardStatus.mir)
+                                        ? "Mir"
+                                        : (cardData2.cardStatus == CardStatus.visa)
+                                            ? "VISA"
+                                            : "UNKNOWN",
+                        size: 14,
+                        color: LightColors.white)
                   ],
-                ),
-                const Spacer(),
-                TextMyFont.textBold(
-                    text: (status == CardStatus.humo)
-                        ? "HUMO"
-                        : (status == CardStatus.mastercard)
-                            ? "MASTERCARD"
-                            : (status == CardStatus.uzcard)
-                                ? "UZCARD"
-                                : (status == CardStatus.mir)
-                                    ? "Mir"
-                                    : (status == CardStatus.visa)
-                                        ? "VISA"
-                                        : "UNKNOWN",
-                    size: 14,
-                    color: LightColors.white)
-              ],
-            )),
-          )
+                )),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -120,11 +261,45 @@ class MyCardsWidget extends StatelessWidget {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: TextMyFont.textBold(text: "Kartalarim", size: 16, color: LightColors.black),
+                    child: Row(
+                      children: [
+                        TextMyFont.textBold(text: "Kartalarim", size: 16, color: LightColors.black),
+                        Spacer(),
+                        if (cardList.length >= 2)
+                          GestureDetector(
+                              onTap: clickAddCard,
+                              child: Icon(
+                                Icons.add_circle,
+                                color: LightColors.enableButtonColor,
+                              )),
+                        if (cardList.length > 2)
+                          GestureDetector(
+                            onTap: clickAllCard,
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: LightColors.enableButtonColor),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2),
+                                    child: TextMyFont.textBold(text: cardList.length.toString(), size: 12, color: LightColors.white),
+                                  ),
+                                ),
+                                const SizedBox(width: 2),
+                                Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: LightColors.colorGrey,
+                                  size: 18,
+                                )
+                              ],
+                            ),
+                          )
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 8),
-                  if (cardList.isEmpty) Expanded(child: _emptyCard(clickCard: () {})),
-                  if (cardList.length == 1) Expanded(child: _oneCard(clickCard: () {})),
+                  if (cardList.isEmpty) Expanded(child: _emptyCard(clickCard: clickAddCard)),
+                  if (cardList.length == 1) Expanded(child: _oneCard(clickCard: clickCard1, clickAddCard: clickAddCard)),
+                  if (cardList.length >= 2) Expanded(child: _allCard(clickCard1: clickCard1, clickCard2: clickCard2)),
                 ],
               ),
             )),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:paynet_app_flutter/features/paynet/bloc/page_main/page_main_bloc.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/history/history_page.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/main_page.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/paynet/payment_page.dart';
@@ -19,17 +21,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      bottomNavigationBar: HomeBottomNavigationBar( selectIndex: _selectedIndex,onItemTapped: (index ) {
+      bottomNavigationBar: HomeBottomNavigationBar(selectIndex: _selectedIndex, onItemTapped: (index) {
         _selectedIndex = index;
         setState(() {});
       },),
-      body:  IndexedStack(
-        index:_selectedIndex,
-        children: const [
-          MainPage(),
-          TransferPage(),
-          PaymentPage(),
-          HistoryPage()
+      body: IndexedStack(
+        index: _selectedIndex,
+        children:  [
+          BlocProvider(
+            create: (context) => PageMainBloc()..add(LoadMainScreenEvent()),
+            child: const MainPage(),
+          ),
+          const TransferPage(),
+          const PaymentPage(),
+          const HistoryPage()
         ],
       ),
 

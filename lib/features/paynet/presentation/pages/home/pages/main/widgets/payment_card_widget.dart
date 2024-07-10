@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:paynet_app_flutter/core/utils/colors/lingth_colors.dart';
+import 'package:paynet_app_flutter/core/utils/component/box_shadow_custom.dart';
 
 import '../../../../../../../../core/utils/component/text_my_font.dart';
 import '../../../../../../../../core/utils/formater/nuber_format.dart';
@@ -31,9 +32,7 @@ class PaymentCardWidget extends StatelessWidget {
       onTap: clickCard,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 14),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: LightColors.white, boxShadow: const [
-          BoxShadow(offset: Offset(0.001, 0.001), color: Colors.black12, blurRadius: 6, spreadRadius: 0.002),
-        ]),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: LightColors.white, boxShadow: BoxShadowCustom.boxShadow),
         child: Center(
           child: Column(
             children: [
