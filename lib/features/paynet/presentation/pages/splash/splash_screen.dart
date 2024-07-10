@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:paynet_app_flutter/features/paynet/bloc/login/login_bloc.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/home_screen.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/login/login_screen.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/splash/splash_status.dart';
 
@@ -24,7 +25,7 @@ class SplashScreen extends StatelessWidget {
                 child: const LoginScreen(),
               ));
         } else if (state.status == SplashStatus.pinCode) {
-          CustomNavigation.push(context, const PinScreen());
+          CustomNavigation.push(context, const HomeScreen());
         }
       },
       builder: (context, state) {
