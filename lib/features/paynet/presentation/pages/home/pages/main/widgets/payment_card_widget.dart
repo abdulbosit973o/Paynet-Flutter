@@ -26,14 +26,24 @@ class PaymentCardWidget extends StatelessWidget {
       required this.money,
       required this.moneyIsHasEye});
 
-  Widget _card({required String svgIcon, required String text, required VoidCallback clickCard}) {
+  Widget _card(
+      {required String svgIcon,
+      required String text,
+      required VoidCallback clickCard}) {
     return GestureDetector(
       onTap: clickCard,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 14),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: LightColors.white, boxShadow: const [
-          BoxShadow(offset: Offset(0.001, 0.001), color: Colors.black12, blurRadius: 6, spreadRadius: 0.002),
-        ]),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: LightColors.white,
+            boxShadow: const [
+              BoxShadow(
+                  offset: Offset(0.001, 0.001),
+                  color: Colors.black12,
+                  blurRadius: 6,
+                  spreadRadius: 0.002),
+            ]),
         child: Center(
           child: Column(
             children: [
@@ -41,7 +51,8 @@ class PaymentCardWidget extends StatelessWidget {
                 svgIcon,
                 height: 28,
                 width: 28,
-                colorFilter: ColorFilter.mode(LightColors.enableButtonColor, BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(
+                    LightColors.enableButtonColor, BlendMode.srcIn),
               ),
               textBold(text: text, size: 14, color: LightColors.black)
             ],
@@ -59,15 +70,25 @@ class PaymentCardWidget extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 16),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(boxShadow: const [
-          BoxShadow(offset: Offset(0.001, 0.001), color: Colors.black12, blurRadius: 10, spreadRadius: 0.002),
+          BoxShadow(
+              offset: Offset(0.001, 0.001),
+              color: Colors.black12,
+              blurRadius: 10,
+              spreadRadius: 0.002),
         ], borderRadius: BorderRadius.circular(16), color: LightColors.white),
         child: Column(
           children: [
             Row(
               children: [
-                textBold(text: "Paynet karta", size: 16, color: LightColors.black),
+                textBold(
+                    text: "Paynet karta", size: 16, color: LightColors.black),
                 const Spacer(),
-                GestureDetector(onTap: clickWhatIsThis, child: textBold(text: "Bu nima?", size: 16, color: LightColors.enableButtonColor)),
+                GestureDetector(
+                    onTap: clickWhatIsThis,
+                    child: textBold(
+                        text: "Bu nima?",
+                        size: 16,
+                        color: LightColors.enableButtonColor)),
               ],
             ),
             Padding(
@@ -75,19 +96,31 @@ class PaymentCardWidget extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                    child: Image.asset("assets/icon/ic_payment_card.png", height: 60, width: 72),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                    child: Image.asset("assets/icon/ic_payment_card.png",
+                        height: 60, width: 72),
                   ),
                   const SizedBox(width: 4),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      textNormal(text: "Paynet karta• $paymentCartFour", size: 14, color: LightColors.colorGrey),
+                      textNormal(
+                          text: "Paynet karta• $paymentCartFour",
+                          size: 14,
+                          color: LightColors.colorGrey),
                       Row(
                         children: [
-                          textBold(text: (moneyIsHasEye) ? formatInt(money) : ". ...", size: 18, color: LightColors.black),
+                          textBold(
+                              text:
+                                  (moneyIsHasEye) ? formatInt(money) : ". ...",
+                              size: 18,
+                              color: LightColors.black),
                           const SizedBox(width: 4),
-                          textBold(text: "so'm", size: 18, color: LightColors.colorGreyLight),
+                          textBold(
+                              text: "so'm",
+                              size: 18,
+                              color: LightColors.colorGreyLight),
                         ],
                       ),
                     ],
@@ -98,11 +131,23 @@ class PaymentCardWidget extends StatelessWidget {
             const SizedBox(height: 4),
             Row(
               children: [
-                Expanded(child: _card(svgIcon: "assets/icon/ic_action_plus.svg", text: "To'ldirish", clickCard: clickFill)),
+                Expanded(
+                    child: _card(
+                        svgIcon: "assets/icon/ic_action_plus.svg",
+                        text: "To'ldirish",
+                        clickCard: clickFill)),
                 const SizedBox(width: 8),
-                Expanded(child: _card(svgIcon: "assets/icon/ic_action_transfers.svg", text: "O'tkazish", clickCard: clickTransfer)),
+                Expanded(
+                    child: _card(
+                        svgIcon: "assets/icon/ic_action_transfers.svg",
+                        text: "O'tkazish",
+                        clickCard: clickTransfer)),
                 const SizedBox(width: 8),
-                Expanded(child: _card(svgIcon: "assets/icon/ic_operations_wallet.svg", text: "To'lash", clickCard: clickToPay)),
+                Expanded(
+                    child: _card(
+                        svgIcon: "assets/icon/ic_operations_wallet.svg",
+                        text: "To'lash",
+                        clickCard: clickToPay)),
               ],
             )
           ],
