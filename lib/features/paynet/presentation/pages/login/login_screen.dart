@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:paynet_app_flutter/core/utils/component/text.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/widgets/custom_navigation.dart';
 
 import '../../../../../core/utils/colors/lingth_colors.dart';
 import '../../../../../core/utils/component/continue_button.dart';
+import '../../../../../core/utils/component/text_my_font.dart';
 import '../../../../../core/utils/formater/phone_number_text_input_formater.dart';
 import '../verification/verification_screen.dart';
 import 'login_bottom_sheet_dialog.dart';
@@ -82,8 +82,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
                   child: Image.asset("assets/icon/image_crickle_green.jpg", height: 60, width: 60)),
-              textBold(text: "Raqamingizni kiriting", size: 24, color: Colors.black),
-              textNormal(text: "Mijoz bo'lish yoki kirish uchun", size: 14, color: Colors.black54),
+              TextMyFont.textBold(text: "Raqamingizni kiriting", size: 24, color: Colors.black),
+              TextMyFont.textNormal(text: "Mijoz bo'lish yoki kirish uchun", size: 14, color: Colors.black54),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const Icon(Icons.keyboard_arrow_down_sharp, color: Colors.black45),
-                    textBold(text: "+998 ", size: 18, color: Colors.black),
+                    TextMyFont.textBold(text: "+998 ", size: 18, color: Colors.black),
                     Expanded(
                       child: TextFormField(
                         onChanged: (text) {
@@ -143,18 +143,19 @@ class _LoginScreenState extends State<LoginScreen> {
               const Spacer(),
               continueButton(
                   clickButton: () {
-                    if(_textNumberController.text.length == 12) {
+                    if (_textNumberController.text.length == 12) {
                       CustomNavigation.push(context, const VerificationScreen());
-                    }                  },
+                    }
+                  },
                   disableAndEnable: _textNumberController.text.length == 12,
                   buttonText: "Davom etish"),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16),
                 child: Column(
                   children: [
-                    textNormal(text: '"Davom etish" tugamsini bosish orqali men', size: 14, color: Colors.black54),
-                    linkText(text: "Xizmatlar ko'rsatish haqidagi oferta shartlarini", size: 14, color: Colors.blueAccent, url: ""),
-                    textAlign(
+                    TextMyFont.textNormal(text: '"Davom etish" tugamsini bosish orqali men', size: 14, color: Colors.black54),
+                    TextMyFont.linkText(text: "Xizmatlar ko'rsatish haqidagi oferta shartlarini", size: 14, color: Colors.blueAccent, url: ""),
+                    TextMyFont.textAlign(
                         text: "qabul qilaman va shaxsiy malumotlarni qayta ishlashga rozilik bildiraman",
                         size: 14,
                         color: Colors.black54,

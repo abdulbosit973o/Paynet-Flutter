@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/colors/lingth_colors.dart';
-import '../../../../../core/utils/component/text.dart';
+import '../../../../../core/utils/component/text_my_font.dart';
 
 Widget loginBottomSheetDialog(
     {required VoidCallback clickRu, required VoidCallback clickCancel, required VoidCallback clickUz, required bool uzAndRuLanguage}) {
@@ -22,7 +22,7 @@ Widget loginBottomSheetDialog(
         ),
         Row(
           children: [
-            textBold(text: "Ilova tili", size: 24, color: Colors.black),
+            TextMyFont.textBold(text: "Ilova tili", size: 24, color: Colors.black),
             const Spacer(),
             GestureDetector(
               onTap: clickCancel,
@@ -65,7 +65,7 @@ Widget loginBottomSheetDialog(
                   ),
                 ),
                 const SizedBox(width: 8),
-                Expanded(child: textBold(text: "Русский", size: 18, color: Colors.black)),
+                Expanded(child: TextMyFont.textBold(text: "Русский", size: 18, color: Colors.black)),
                 if (!uzAndRuLanguage) Icon(Icons.check, color: LightColors.enableButtonColor)
               ],
             ),
@@ -101,7 +101,7 @@ Widget loginBottomSheetDialog(
                   ),
                 ),
                 const SizedBox(width: 8),
-                Expanded(child: textBold(text: "O'zbek", size: 18, color: Colors.black)),
+                Expanded(child: TextMyFont.textBold(text: "O'zbek", size: 18, color: Colors.black)),
                 if (uzAndRuLanguage) Icon(Icons.check, color: LightColors.enableButtonColor)
               ],
             ),
