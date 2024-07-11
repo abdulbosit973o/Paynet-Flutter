@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/home_common_widget.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/main_app_bar.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/my_cards_widget.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/my_money_widget.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/payment_card_widget.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/payment_offer_widget.dart';
+
+import '../../../../../../../core/utils/assets/app_image.dart';
+import '../../../../../bloc/add_card/add_card_bloc.dart';
+import '../../../../../bloc/page_main/page_main_bloc.dart';
+import '../../../add_card/add_card_screen.dart';
+import 'dialog/home_add_card_dialog.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
