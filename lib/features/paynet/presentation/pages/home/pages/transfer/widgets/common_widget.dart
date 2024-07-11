@@ -6,6 +6,7 @@ class CustomCard extends StatelessWidget {
   final Color backgroundColor;
   final String imagePath;
   final VoidCallback onTap;
+  final double height;
 
   CustomCard({
     required this.title,
@@ -13,6 +14,7 @@ class CustomCard extends StatelessWidget {
     required this.backgroundColor,
     required this.imagePath,
     required this.onTap,
+    this.height =84
   });
 
   @override
@@ -20,7 +22,7 @@ class CustomCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 84,
+        height: height,
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(16),

@@ -5,12 +5,14 @@ class InternationalTransfer extends StatelessWidget {
   final Color backgroundColor;
   final String imagePath;
   final VoidCallback onTap;
+  final double height;
 
   InternationalTransfer({super.key,
     required this.title,
     required this.backgroundColor,
     required this.imagePath,
     required this.onTap,
+    this.height=156
   });
 
   @override
@@ -18,7 +20,7 @@ class InternationalTransfer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 156,
+        height: height,
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(16),

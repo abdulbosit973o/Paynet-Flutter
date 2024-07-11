@@ -81,7 +81,7 @@ class CommonCard extends StatelessWidget {
             Expanded(
               flex: 4,
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Center(
                   child: Image.asset(
                     imagePath,
