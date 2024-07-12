@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:paynet_app_flutter/features/paynet/bloc/all_card/all_card_bloc.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/all_card/all_card_screen.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/home_common_widget.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/main_app_bar.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/main/widgets/my_cards_widget.dart';
@@ -85,7 +87,6 @@ class MainPage extends StatelessWidget {
                           clickUz: () async {
                             Navigator.pop(context);
 
-                            print('value push value MainPage');
                             final value = await Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -93,14 +94,8 @@ class MainPage extends StatelessWidget {
                                           create: (context) => AddCardBloc(),
                                           child: const AddCardScreen(),
                                         )));
-                            print('print value before mounted: $value');
-
                             if (!context.mounted) return;
-
-                            print('print value: $value');
-
                             if (value is bool && value == true) {
-                              print("blockni chaqirdim 0");
                               context.read<PageMainBloc>().add(LoadMainScreenEvent());
                             }
                           },
@@ -108,16 +103,29 @@ class MainPage extends StatelessWidget {
                       },
                     );
                   },
-                  cardList: state.cardList,/* [
+                  cardList: state.cardList,
+                  /* [
                     CardModel("1234 2222 2222 3333", "12/12", CardStatus.humo, 123413, 4),
                   ],*/
                   moneyIsHasEye: true,
                   keshbekMoney: 0,
                   clickCard1: () {},
                   clickCard2: () {},
-                  clickAllCard: () {},
-                ),
+                  clickAllCard: () async {
+                    final value = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BlocProvider(
+                                  create: (context) => AllCardBloc()..add(LoadAllCardEvent()),
+                                  child: AllCardScreen(),
+                                )));
 
+                    if (!context.mounted) return;
+                    if (value is bool && value == true) {
+                      context.read<PageMainBloc>().add(LoadMainScreenEvent());
+                    }
+                  },
+                ),
                 const SizedBox(height: 12),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -157,8 +165,6 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-
-
               ],
             ),
           );

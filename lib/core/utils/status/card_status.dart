@@ -1,10 +1,10 @@
 enum CardStatus {
-  uzcard,
-  humo,
-  mir,
-  visa,
-  mastercard,
-  unknown;
+  Uzcard,
+  Humo,
+  Mir,
+  Visa,
+  Mastercard,
+  Unknown;
 
 }
 

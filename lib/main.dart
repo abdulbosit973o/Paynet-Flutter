@@ -10,7 +10,7 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await HiveHelper.initializeHive();
-  runApp(const Text(""));
+  runApp(const MyApp());
 
 }
 

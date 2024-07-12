@@ -61,7 +61,7 @@ class MyCardsWidget extends StatelessWidget {
             child: GestureDetector(
               onTap: clickAddCard,
               child: SizedBox(
-                height: double.infinity,
+                  height: double.infinity,
                   width: double.infinity,
                   child: Center(child: TextMyFont.textNormal(text: "Karta qo'shish", size: 14, color: LightColors.black))),
             ),
@@ -78,16 +78,46 @@ class MyCardsWidget extends StatelessWidget {
                   Row(
                     children: [
                       Image.asset(
-                        "assets/icon/ue_flag.png",
+                        "assets/icon/ic_card_icons.png",
                         height: 24,
                         width: 24,
                       ),
                       const Spacer(),
-                      Image.asset(
-                        "assets/icon/ic_text_humo.png",
-                        height: 28,
-                        width: 60,
-                      )
+                      if (status == CardStatus.Humo.name)
+                        Image.asset(
+                          "assets/icon/humo.png",
+                          height: 28,
+                          width: 60,
+                          color: LightColors.white,
+                        ),
+                      if (status == CardStatus.Mastercard.name)
+                        Image.asset(
+                          "assets/icon/master_card.png",
+                          height: 28,
+                          width: 70,
+                          color: LightColors.white,
+                        ),
+                      if (status == CardStatus.Uzcard.name)
+                        Image.asset(
+                          "assets/icon/uzcard.png",
+                          height: 28,
+                          width: 60,
+                          color: LightColors.white,
+                        ),
+                      if (status == CardStatus.Mir.name)
+                        Image.asset(
+                          "assets/icon/mir.png",
+                          height: 28,
+                          width: 60,
+                          color: LightColors.white,
+                        ),
+                      if (status == CardStatus.Visa.name)
+                        Image.asset(
+                          "assets/icon/visa.png",
+                          height: 28,
+                          width: 60,
+                          color: LightColors.white,
+                        )
                     ],
                   ),
                   const SizedBox(height: 8),
@@ -100,18 +130,18 @@ class MyCardsWidget extends StatelessWidget {
                   ),
                   const Spacer(),
                   TextMyFont.textBold(
-                      text: (status == CardStatus.humo.name)
+                      text: (status == CardStatus.Humo.name)
                           ? "HUMO"
-                          : (status == CardStatus.mastercard.name)
+                          : (status == CardStatus.Mastercard.name)
                               ? "MASTERCARD"
-                              : (status == CardStatus.uzcard.name)
+                              : (status == CardStatus.Uzcard.name)
                                   ? "UZCARD"
-                                  : (status == CardStatus.mir.name)
+                                  : (status == CardStatus.Mir.name)
                                       ? "Mir"
-                                      : (status == CardStatus.visa.name)
+                                      : (status == CardStatus.Visa.name)
                                           ? "VISA"
                                           : "UNKNOWN",
-                      size: 14,
+                      size: 12,
                       color: LightColors.white)
                 ],
               )),
@@ -145,16 +175,46 @@ class MyCardsWidget extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          "assets/icon/ue_flag.png",
+                          "assets/icon/ic_card_icons.png",
                           height: 24,
                           width: 24,
                         ),
                         const Spacer(),
-                        Image.asset(
-                          "assets/icon/ic_text_humo.png",
-                          height: 28,
-                          width: 60,
-                        )
+                        if (cardData1.cardStatus == CardStatus.Humo.name)
+                          Image.asset(
+                            "assets/icon/humo.png",
+                            height: 28,
+                            width: 60,
+                            color: LightColors.white,
+                          ),
+                        if (cardData1.cardStatus == CardStatus.Mastercard.name)
+                          Image.asset(
+                            "assets/icon/master_card.png",
+                            height: 28,
+                            width: 70,
+                            color: LightColors.white,
+                          ),
+                        if (cardData1.cardStatus == CardStatus.Uzcard.name)
+                          Image.asset(
+                            "assets/icon/uzcard.png",
+                            height: 28,
+                            width: 60,
+                            color: LightColors.white,
+                          ),
+                        if (cardData1.cardStatus == CardStatus.Mir.name)
+                          Image.asset(
+                            "assets/icon/mir.png",
+                            height: 28,
+                            width: 60,
+                            color: LightColors.white,
+                          ),
+                        if (cardData1.cardStatus == CardStatus.Visa.name)
+                          Image.asset(
+                            "assets/icon/visa.png",
+                            height: 28,
+                            width: 60,
+                            color: LightColors.white,
+                          )
                       ],
                     ),
                     const SizedBox(height: 6),
@@ -167,18 +227,18 @@ class MyCardsWidget extends StatelessWidget {
                     ),
                     const Spacer(),
                     TextMyFont.textBold(
-                        text: (cardData1.cardStatus == CardStatus.humo.name)
+                        text: (cardData1.cardStatus == CardStatus.Humo.name)
                             ? "HUMO"
-                            : (cardData1.cardStatus == CardStatus.mastercard.name)
+                            : (cardData1.cardStatus == CardStatus.Mastercard.name)
                                 ? "MASTERCARD"
-                                : (cardData1.cardStatus == CardStatus.uzcard.name)
+                                : (cardData1.cardStatus == CardStatus.Uzcard.name)
                                     ? "UZCARD"
-                                    : (cardData1.cardStatus == CardStatus.mir.name)
+                                    : (cardData1.cardStatus == CardStatus.Mir.name)
                                         ? "Mir"
-                                        : (cardData1.cardStatus == CardStatus.visa.name)
+                                        : (cardData1.cardStatus == CardStatus.Visa.name)
                                             ? "VISA"
                                             : "UNKNOWN",
-                        size: 14,
+                        size: 12,
                         color: LightColors.white)
                   ],
                 )),
@@ -199,16 +259,46 @@ class MyCardsWidget extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          "assets/icon/ue_flag.png",
+                          "assets/icon/ic_card_icons.png",
                           height: 24,
                           width: 24,
                         ),
                         const Spacer(),
-                        Image.asset(
-                          "assets/icon/ic_text_humo.png",
-                          height: 28,
-                          width: 60,
-                        )
+                        if (cardData2.cardStatus == CardStatus.Humo.name)
+                          Image.asset(
+                            "assets/icon/humo.png",
+                            height: 28,
+                            width: 60,
+                            color: LightColors.white,
+                          ),
+                        if (cardData2.cardStatus == CardStatus.Mastercard.name)
+                          Image.asset(
+                            "assets/icon/master_card.png",
+                            height: 28,
+                            width: 70,
+                            color: LightColors.white,
+                          ),
+                        if (cardData2.cardStatus == CardStatus.Uzcard.name)
+                          Image.asset(
+                            "assets/icon/uzcard.png",
+                            height: 28,
+                            width: 60,
+                            color: LightColors.white,
+                          ),
+                        if (cardData2.cardStatus == CardStatus.Mir.name)
+                          Image.asset(
+                            "assets/icon/mir.png",
+                            height: 28,
+                            width: 60,
+                            color: LightColors.white,
+                          ),
+                        if (cardData2.cardStatus == CardStatus.Visa.name)
+                          Image.asset(
+                            "assets/icon/visa.png",
+                            height: 28,
+                            width: 60,
+                            color: LightColors.white,
+                          )
                       ],
                     ),
                     const SizedBox(height: 6),
@@ -221,18 +311,18 @@ class MyCardsWidget extends StatelessWidget {
                     ),
                     const Spacer(),
                     TextMyFont.textBold(
-                        text: (cardData2.cardStatus == CardStatus.humo)
+                        text: (cardData2.cardStatus == CardStatus.Humo.name)
                             ? "HUMO"
-                            : (cardData2.cardStatus == CardStatus.mastercard)
+                            : (cardData2.cardStatus == CardStatus.Mastercard.name)
                                 ? "MASTERCARD"
-                                : (cardData2.cardStatus == CardStatus.uzcard)
+                                : (cardData2.cardStatus == CardStatus.Uzcard.name)
                                     ? "UZCARD"
-                                    : (cardData2.cardStatus == CardStatus.mir)
+                                    : (cardData2.cardStatus == CardStatus.Mir.name)
                                         ? "Mir"
-                                        : (cardData2.cardStatus == CardStatus.visa)
+                                        : (cardData2.cardStatus == CardStatus.Visa.name)
                                             ? "VISA"
                                             : "UNKNOWN",
-                        size: 14,
+                        size: 12,
                         color: LightColors.white)
                   ],
                 )),
@@ -265,7 +355,7 @@ class MyCardsWidget extends StatelessWidget {
                       children: [
                         TextMyFont.textBold(text: "Kartalarim", size: 16, color: LightColors.black),
                         Spacer(),
-                        if (cardList.length >= 2)
+                        if (cardList.length == 2)
                           GestureDetector(
                               onTap: clickAddCard,
                               child: Icon(

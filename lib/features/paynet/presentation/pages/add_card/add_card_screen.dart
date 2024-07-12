@@ -5,9 +5,10 @@ import 'package:paynet_app_flutter/core/utils/colors/lingth_colors.dart';
 import 'package:paynet_app_flutter/core/utils/component/text_my_font.dart';
 import 'package:paynet_app_flutter/core/utils/formater/card_check/check_expiry.dart';
 import 'package:paynet_app_flutter/core/utils/formater/card_number_text_input_formater.dart';
-import 'package:paynet_app_flutter/core/utils/status/card_status.dart';
 import 'package:paynet_app_flutter/features/paynet/bloc/add_card/add_card_bloc.dart';
+import 'package:paynet_app_flutter/features/paynet/bloc/page_main/page_main_bloc.dart';
 import 'package:paynet_app_flutter/features/paynet/data/model/card_model.dart';
+import 'package:paynet_app_flutter/features/paynet/presentation/pages/add_card/widget/bottom_button.dart';
 
 import '../../../../../core/utils/formater/card_check/card_check_status.dart';
 import '../../../../../core/utils/formater/card_expiry_data_text_input_formater.dart';
@@ -162,39 +163,17 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 ),
               ),
               const Spacer(),
-              Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(topRight: Radius.circular(16), topLeft: Radius.circular(16)), color: LightColors.white),
-                  child: GestureDetector(
-                    onTap: (buttonVisible)
-                        ? () {
-                      final a  = CardCheckStatus.detectCardType(_textCardNumberController.text);
-                      print(a.name);
-                            var cardModel = CardModel(_textCardNumberController.text, _textCardYearController.text,
-                                CardCheckStatus.detectCardType(_textCardNumberController.text).name, 10000000, 2);
-                            context.read<AddCardBloc>().add(AddCardHiveEvent(cardModel: cardModel));
-                            print("pop value : true");
-                            Navigator.pop(context, true);
-                          }
-                        : null,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: (buttonVisible) ? LightColors.enableButtonColor : LightColors.disableButtonColor,
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        child: Center(
-                            child: Text("Davom etish",
-                                style: TextStyle(
-                                    color: (buttonVisible) ? Colors.white : LightColors.disableButtonTextColor,
-                                    fontSize: 18,
-                                    fontFamily: "PaynetB"))),
-                      ),
-                    ),
-                  ))
+              BottomButton(
+                  clickButton: () {
+                    final a = CardCheckStatus.detectCardType(_textCardNumberController.text);
+                    var cardModel = CardModel(_textCardNumberController.text, _textCardYearController.text,
+                        CardCheckStatus.detectCardType(_textCardNumberController.text).name, 10000000, 0);
+                    context.read<AddCardBloc>().add(AddCardHiveEvent(cardModel: cardModel));
+
+                    Navigator.pop(context, true);
+                  },
+                  buttonVisible: buttonVisible,
+                  buttonText: "Davom etish")
             ],
           );
         },

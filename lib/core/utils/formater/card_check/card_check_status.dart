@@ -32,17 +32,17 @@ class CardCheckStatus{
 
     // Karta turini aniqlash
     if (uzcardBins.any((prefix) => bin.startsWith(prefix))) {
-      return CardStatus.uzcard;
+      return CardStatus.Uzcard;
     } else if (humoBins.any((prefix) => bin.startsWith(prefix))) {
-      return CardStatus.humo;
+      return CardStatus.Humo;
     } else if (mirBins.any((prefix) => bin.startsWith(prefix))) {
-      return CardStatus.mir;
+      return CardStatus.Mir;
     } else if (visaBins.any((prefix) => bin.startsWith(prefix))) {
-      return CardStatus.visa;
+      return CardStatus.Visa;
     } else if (mastercardBins.any((prefix) => bin.startsWith(prefix))) {
-      return CardStatus.mastercard;
+      return CardStatus.Mastercard;
     } else {
-      return CardStatus.unknown;
+      return CardStatus.Unknown;
     }
   }
 
