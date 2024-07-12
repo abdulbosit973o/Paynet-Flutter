@@ -10,7 +10,8 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await HiveHelper.initializeHive();
-  runApp(const MyApp());
+  runApp(const Text(""));
+
 }
 
 class MyApp extends StatelessWidget {
