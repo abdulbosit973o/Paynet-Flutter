@@ -113,7 +113,7 @@ class _PinViewState extends State<PinView> with SingleTickerProviderStateMixin {
               context.read<PinBloc>().add(NavigateNext());
             }
             else if(state is PinSuccess) {
-              CustomNavigation.push(context, const HomeScreen());
+              CustomNavigation.pushAndRemoveUntil(context, const HomeScreen());
             }
           },
           child: Column(

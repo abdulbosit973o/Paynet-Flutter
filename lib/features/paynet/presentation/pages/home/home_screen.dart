@@ -7,6 +7,8 @@ import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/pages/transfer/transfer_page.dart';
 import 'package:paynet_app_flutter/features/paynet/presentation/pages/home/widgets/home_bottom_navigation_bar.dart';
 
+import '../../../bloc/payment/payment_bloc.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -21,19 +23,25 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      bottomNavigationBar: HomeBottomNavigationBar(selectIndex: _selectedIndex, onItemTapped: (index) {
+      bottomNavigationBar: HomeBottomNavigationBar(
+        selectIndex: _selectedIndex, onItemTapped: (index) {
         _selectedIndex = index;
         setState(() {});
       },),
       body: IndexedStack(
         index: _selectedIndex,
-        children:  [
+        children: [
           BlocProvider(
-            create: (context) => PageMainBloc()..add(LoadMainScreenEvent()),
+            create: (context) =>
+            PageMainBloc()
+              ..add(LoadMainScreenEvent()),
             child: const MainPage(),
           ),
           const TransferPage(),
-          const PaymentPage(),
+          BlocProvider(
+            create: (context) => PaymentBloc(),
+            child: const  PaymentPage(),
+          ),
           const HistoryPage()
         ],
       ),
